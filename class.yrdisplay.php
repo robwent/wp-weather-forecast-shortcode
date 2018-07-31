@@ -65,7 +65,7 @@ class YRDisplay {
 EOT;
 		}
 		$this->ht .= <<<EOT
-    <div id="yr-varsel">
+    <div id="yr-varsel" class="yr-varsel">
 
 EOT;
 	}
