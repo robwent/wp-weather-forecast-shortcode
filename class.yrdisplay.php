@@ -119,7 +119,7 @@ EOT;
 		 */
 		if ( $this->lang == 'nb' ) {
 			$this->ht .= <<<EOT
-      <h2><a href="$url" target="$target">V&aelig;rvarsel for $this->yr_name</a></h2>
+      <h2>V&aelig;rvarsel for $this->yr_name</h2>
       <div class="yr-no-metogram">
       <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
 </div> 
@@ -127,7 +127,7 @@ EOT;
 EOT;
 		} else {
 			$this->ht .= <<<EOT
-      <h2><a href="{$url}" target="$target">Forecast for $this->yr_name</a></h2>      
+      <h2>Forecast for $this->yr_name</h2>      
       <div class="yr-no-metogram">
       <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
 </div> 
