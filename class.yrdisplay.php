@@ -110,13 +110,20 @@ EOT;
 		if ( $this->lang == 'nb' ) {
 			$this->ht .= <<<EOT
       <h2><a href="$url" target="$target">V&aelig;rvarsel for $this->yr_name</a></h2>
-      <p><a href="http://www.yr.no/" target="$target" title="Til yr.no for full værmelding"><strong>Værvarsel fra yr.no, levert av Meteorologisk institutt og NRK.</strong></a></p>
+      <p><a href="http://www.yr.no/" target="$target" title="Til yr.no for full værmelding"><small>Værvarsel fra yr.no, levert av Meteorologisk institutt og NRK.</small></a></p>
+      <div class="yr-no-metogram">
+      <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
+</div> 
 
 EOT;
 		} else {
 			$this->ht .= <<<EOT
-      <h2><a href="$url" target="$target">Forecast for $this->yr_name</a></h2>
-      <p><a href="http://www.yr.no/" target="$target" title="To yr.no for complete forecast"><strong>Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</strong></a></p>
+      <h2><a href="{$url}" target="$target">Forecast for $this->yr_name</a></h2>
+      <p><a href="http://www.yr.no/" target="$target" title="To yr.no for complete forecast"><small>Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</small></a></p>
+      
+      <div class="yr-no-metogram">
+      <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
+</div> 
 
 EOT;
 		}
