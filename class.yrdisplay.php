@@ -121,7 +121,7 @@ EOT;
 			$this->ht .= <<<EOT
       <h2>V&aelig;rvarsel for $this->yr_name</h2>
       <div class="yr-no-metogram">
-      <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
+      <img class="img-fluid img-responsive w-100" src="{$url}/avansert_meteogram.png">
 </div> 
 
 EOT;
@@ -129,7 +129,7 @@ EOT;
 			$this->ht .= <<<EOT
       <h2>Forecast for $this->yr_name</h2>      
       <div class="yr-no-metogram">
-      <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
+      <img class="img-fluid img-responsive w-100" src="{$url}/avansert_meteogram.png">
 </div> 
 
 EOT;
