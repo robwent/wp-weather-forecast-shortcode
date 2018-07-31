@@ -90,7 +90,8 @@ EOT
 
    //Generer Copyright for data fra yr.no
    public function getCopyright($target='_top'){
-      $url=YRComms::convertEncodingEntities($this->yr_url);
+		$yr = new YRComms();
+      $url=$yr->convertEncodingEntities($this->yr_url);
       /*
        Du må ta med teksten nedenfor og ha med lenke til yr.no.
        Om du fjerner denne teksten og lenkene, bryter du vilkårene for bruk av data fra yr.no.
@@ -217,8 +218,9 @@ EOT
 		foreach($a as $yr_var3){
 			list($fromdate, $fromtime)=explode('T', $yr_var3['ATTRIBUTES']['FROM']);
 			list($todate, $totime)=explode('T', $yr_var3['ATTRIBUTES']['TO']);
-			$fromtime=YRComms::parseTime($fromtime);
-			$totime=YRComms::parseTime($totime, 1);
+			$yr = new YRComms();
+			$fromtime=$yr->parseTime($fromtime);
+			$totime=$yr->parseTime($totime, 1);
 			if($fromdate!=$thisdate){
 				$divider=<<<EOT
           <tr>
@@ -339,7 +341,7 @@ EOT
 
 
 	//Main with caching
-	public function generateHTMLCached($url,$name,$xml, $url, $try_curl, $useHtmlHeader=true, $useHtmlFooter=true, $useBanner=true, $useText=true, $useLinks=true, $useTable=true, $maxage=0, $timeout=10, $urlTarget='_top'){
+	public function generateHTMLCached($url,$name,$xml, $try_curl, $useHtmlHeader=true, $useHtmlFooter=true, $useBanner=true, $useText=true, $useLinks=true, $useTable=true, $maxage=0, $timeout=10, $urlTarget='_top'){
 		if ( strpos($url,'/place/') )
 			$this->lang = 'en';
 		else
@@ -349,10 +351,11 @@ EOT
 		$this->handleDataDir(false,htmlentities("$name.$useHtmlHeader.$useHtmlFooter.$useBanner.$useText.$useLinks.$useTable.$maxage.$timeout.$urlTarget"));
 		$yr_cached = $this->datapath;
 		// Clean name
-		$name=YRComms::convertEncodingUTF($name);
-		$name=YRComms::convertEncodingEntities($name);
+		$yr = new YRComms();
+		$name=$yr->convertEncodingUTF($name);
+		$name=$yr->convertEncodingEntities($name);
 		// Clean URL
-		$url=YRComms::convertEncodingUTF($url);
+		$url=$yr->convertEncodingUTF($url);
 		// Er mellomlagring enablet, og trenger vi egentlig laste ny data, eller holder mellomlagret data?
 		if(($maxage>0)&&((file_exists($yr_cached))&&((time()-filemtime($yr_cached))<$maxage))){
 			$data['value']=file_get_contents($yr_cached);

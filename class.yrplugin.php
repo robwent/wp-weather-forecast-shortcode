@@ -22,6 +22,7 @@ class YRPlugin {
 				'table'   => true,
 				'maxage'  => 1200,
 				'timeout' => 10,
+				'target' => '_blank,'
 			),
 			$atts ) );
 		// Sanitize variables:
@@ -34,7 +35,7 @@ class YRPlugin {
 		$GLOBALS['yr_datadir'] = trailingslashit( dirname( __FILE__ ) ) . self::cache;
 		$xml = new YRComms;
 		$yr  = new YRDisplay;
-		return $yr->generateHTMLCached( $url, $name, $xml, $url, self::curl, self::hdrft, self::hdrft, $banner, $text, $links, $table, $maxage, $timeout, $target );
+		return $yr->generateHTMLCached( $url, $name, $xml,self::curl, self::hdrft, self::hdrft, $banner, $text, $links, $table, $maxage, $timeout, $target );
 	}
 
 	public function register_shortcodes() {
