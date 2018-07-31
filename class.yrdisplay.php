@@ -249,7 +249,7 @@ EOT;
 
 EOT;
 				list( $thisyear, $thismonth, $thisdate ) = explode( '-', $fromdate );
-				$displaydate   = $thisdate . "." . $thismonth . "." . $thisyear;
+				$displaydate   = $thisdate . "/" . $thismonth . "/" . $thisyear;
 				$firstcellcont = $displaydate;
 				$thisdate      = $fromdate;
 				++ $dayctr;
