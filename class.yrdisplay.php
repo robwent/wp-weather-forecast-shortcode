@@ -237,7 +237,6 @@ EOT
 			}else $divider=$firstcellcont='';
 
 			// Vis ny dato
-			if($dayctr<7){
 				$this->ht.=$divider;
 				// Behandle symbol
 				$imgno=$yr_var3['SYMBOL'][0]['ATTRIBUTES']['NUMBER'];
@@ -294,7 +293,6 @@ EOT
 
 EOT
 				;
-			}
 		}
 	}
 
