@@ -71,11 +71,21 @@ EOT;
 	}
 
 	//Generer footer for varselet
-	public function getFooter( $use_full_html ) {
-		$this->ht .= <<<EOT
-    </div>
+	public function getFooter( $use_full_html, $target = '_blank' ) {
 
+		
+		if ( $this->lang == 'nb' ) {
+			$this->ht .= <<<EOT
+		<p><a href="http://www.yr.no/" target="$target" title="Til yr.no for full værmelding"><small>Værvarsel fra yr.no, levert av Meteorologisk institutt og NRK.</small></a></p>
+</div>
 EOT;
+		} else {
+		$this->ht .= <<<EOT
+		<p><a href="http://www.yr.no/" target="$target" title="To yr.no for complete forecast"><small>Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</small></a></p>
+</div>
+EOT;
+		};
+
 		// Her kan du endre footer til hva du vil. NB! Husk å skru det på, ved å endre instillingene i toppen av dokumentet
 		if ( $use_full_html ) {
 			$this->ht .= <<<EOT
@@ -88,7 +98,7 @@ EOT;
 
 
 	//Generer Copyright for data fra yr.no
-	public function getBanner( $target = '_top' ) {
+	public function getBanner( $target = '_blank' ) {
 		$url      = YRComms::convertEncodingEntities( $this->yr_url );
 		$this->ht .= <<<EOT
       <h1><a href="http://www.yr.no/" target="$target"><img src="http://fil.nrk.no/yr/grafikk/php-varsel/topp.png" alt="yr.no" title="yr.no er en tjeneste fra Meteorologisk institutt og NRK" /></a></h1>
@@ -110,7 +120,6 @@ EOT;
 		if ( $this->lang == 'nb' ) {
 			$this->ht .= <<<EOT
       <h2><a href="$url" target="$target">V&aelig;rvarsel for $this->yr_name</a></h2>
-      <p><a href="http://www.yr.no/" target="$target" title="Til yr.no for full værmelding"><small>Værvarsel fra yr.no, levert av Meteorologisk institutt og NRK.</small></a></p>
       <div class="yr-no-metogram">
       <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
 </div> 
@@ -118,9 +127,7 @@ EOT;
 EOT;
 		} else {
 			$this->ht .= <<<EOT
-      <h2><a href="{$url}" target="$target">Forecast for $this->yr_name</a></h2>
-      <p><a href="http://www.yr.no/" target="$target" title="To yr.no for complete forecast"><small>Weather forecast from yr.no, delivered by the Norwegian Meteorological Institute and the NRK.</small></a></p>
-      
+      <h2><a href="{$url}" target="$target">Forecast for $this->yr_name</a></h2>      
       <div class="yr-no-metogram">
       <img class="img-fluid img-responsive" src="{$url}/avansert_meteogram.png">
 </div> 
@@ -453,7 +460,7 @@ EOT;
 			$this->getWeatherTableContent();
 			$this->getWeatherTableFooter( $urlTarget );
 		}
-		$this->getFooter( $useHtmlFooter );
+		$this->getFooter( $useHtmlFooter, $urlTarget );
 
 		// Returner resultat
 		//return YRComms::convertEncodingEntities($this->ht);
